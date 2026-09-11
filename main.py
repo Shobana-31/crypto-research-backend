@@ -1,5 +1,3 @@
-# main.py - Entry Point
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -22,30 +20,23 @@ app.include_router(coins.router, prefix="/api", tags=["Coins"])
 app.include_router(global_stats.router, prefix="/api", tags=["Global"])
 app.include_router(search.router, prefix="/api", tags=["Search"])
 
+
 @app.get("/")
 async def root():
     return {
-        "message": "🚀 Crypto API Running with MOCK DATA!",
+        "message": "Crypto API Running!",
         "version": "1.0.0",
-        "data_source": "MOCK (No CoinGecko API calls)",
         "endpoints": [
-            {"path": "/api/coins", "description": "List of all mock coins"},
-            {"path": "/api/coins/{id}", "description": "Mock coin details"},
-            {"path": "/api/coins/{id}/chart", "description": "Mock chart data"},
-            {"path": "/api/global", "description": "Mock global statistics"},
-            {"path": "/api/search?query=bitcoin", "description": "Search mock coins"}
+            "/api/coins",
+            "/api/coins/{id}",
+            "/api/coins/{id}/chart",
+            "/api/global",
+            "/api/search?query=bitcoin"
         ]
     }
 
 
 if __name__ == "__main__":
     import uvicorn
-    
-    print("=" * 50)
-    print("🚀 MOCK DATA SERVER STARTING!")
-    print("📊 Data Source: MOCK (No CoinGecko API)")
-    print("🌐 Server: http://localhost:5000")
-    print("📖 API Docs: http://localhost:5000/docs")
-    print("=" * 50)
-    
+    print("Server: http://localhost:5000")
     uvicorn.run(app, host="0.0.0.0", port=5000)

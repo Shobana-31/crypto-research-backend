@@ -1,4 +1,4 @@
-# routes/search.py - Search Endpoint
+# Search Endpoint
 
 from fastapi import APIRouter
 from data.coins import MOCK_COINS
